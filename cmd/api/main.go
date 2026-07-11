@@ -9,6 +9,8 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
+// function stubs
+
 func main() {
 	fmt.Println("🚀 Starting Habit Streak Tracker GraphQL API...")
 

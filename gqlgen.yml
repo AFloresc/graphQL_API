@@ -1,0 +1,43 @@
+schema:
+  - internal/graph/*.graphqls
+
+exec:
+  package: generated
+  layout: single-file
+  filename: internal/graph/generated/generated.go
+
+model:
+  filename: internal/graph/model/models_gen.go
+  package: model
+
+# model_template: [your/path/model.gotpl]
+
+resolver:
+  package: resolvers
+  layout: follow-schema
+
+  dir: internal/graph/resolvers
+  filename_template: "{name}.resolvers.go"
+
+autobind:
+  - "Go-Gin-SQLite-Habit-Streak-GraphQL-API/internal/models"
+
+models:
+  ID:
+    model:
+      - github.com/99designs/gqlgen/graphql.ID
+      - github.com/99designs/gqlgen/graphql.Int
+      - github.com/99designs/gqlgen/graphql.Int64
+      - github.com/99designs/gqlgen/graphql.Int32
+
+  UUID:
+    model:
+      - github.com/99designs/gqlgen/graphql.UUID
+
+  Int:
+    model:
+      - github.com/99designs/gqlgen/graphql.Int32
+  Int64:
+    model:
+      - github.com/99designs/gqlgen/graphql.Int
+      - github.com/99designs/gqlgen/graphql.Int64
