@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"gaphql-api/internal/database"
+	"log"
 	"net/http"
 	"os"
 
@@ -13,6 +15,14 @@ import (
 
 func main() {
 	fmt.Println("🚀 Starting Habit Streak Tracker GraphQL API...")
+
+	db, err := database.InitDB("./data/habits.db")
+	if err != nil {
+		log.Fatal("failed to connect database: ", err)
+	}
+
+	defer db.Close()
+	fmt.Println("🚀 Databse connected successgully!")
 
 	// struct
 	router := gin.Default()
